@@ -6,13 +6,14 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#include <pocketlang.h>
+
+#include <assert.h>
+#include <errno.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <assert.h>
-
-#include <pocketlang.h>
 
 #define CLI_NOTICE                                                            \
   "PocketLang " PK_VERSION_STRING " (https://github.com/ThakeeNathees/pocketlang/)\n" \
@@ -31,6 +32,14 @@
 
 // These macros below are copied from pocketlang at "src/common.h". See above
 // for not re-using these macros.
+
+#if defined(__GNUC__)
+  #pragma GCC diagnostic ignored "-Wint-to-pointer-cast"
+  #pragma GCC diagnostic ignored "-Wunused-parameter"
+#elif defined(__clang__)
+  #pragma clang diagnostic ignored "-Wint-to-pointer-cast"
+  #pragma clang diagnostic ignored "-Wunused-parameter"
+#endif
 
 // The internal assertion macro, this will print error and break regardless of
 // the build target (debug or release). Use ASSERT() for debug assertion and

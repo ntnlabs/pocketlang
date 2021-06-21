@@ -29,7 +29,6 @@ HASH_CHECK_LIST = [
 C_SOURCE_DIRS = [
   "../src/",
   "../cli/",
-  "../cli/modules/",
 ]
 
 ## This global variable will be set to true if any check failed.
